@@ -1,7 +1,7 @@
 {
   "name": "1kpi-dashboard",
   "version": "1.0.0",
-  "description": "Istanbul Müşteriler KPI Dashboard - React tabanlı performans takip sistemi",
+  "description": "Istanbul Müşteriler KPI Dashboard",
   "main": "src/App.js",
   "scripts": {
     "start": "react-scripts start",
@@ -9,25 +9,10 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "keywords": [
-    "kpi",
-    "dashboard",
-    "react",
-    "performance",
-    "tracking",
-    "istanbul",
-    "musteriler"
-  ],
-  "author": "Your Name",
-  "license": "MIT",
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1"
-  },
-  "devDependencies": {
-    "@types/react": "^18.2.0",
-    "@types/react-dom": "^18.2.0"
   },
   "browserslist": {
     "production": [
