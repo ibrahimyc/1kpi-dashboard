@@ -1,5 +1,5 @@
 {
-  "name": "kpi-dashboard",
+  "name": "1kpi-dashboard",
   "version": "1.0.0",
   "description": "Istanbul Müşteriler KPI Dashboard - React tabanlı performans takip sistemi",
   "main": "src/App.js",
@@ -14,7 +14,9 @@
     "dashboard",
     "react",
     "performance",
-    "tracking"
+    "tracking",
+    "istanbul",
+    "musteriler"
   ],
   "author": "Your Name",
   "license": "MIT",
