@@ -324,7 +324,7 @@ const KPIDashboard = () => {
     link.setAttribute("href", encodedUri);
     link.setAttribute(
       "download",
-      `${filename}_${new Date().toISOString().split("T")[0]}.csv`
+      filename + "_" + new Date().toISOString().split("T")[0] + ".csv"
     );
     document.body.appendChild(link);
     link.click();
@@ -355,7 +355,7 @@ const KPIDashboard = () => {
 
     // Simülasyon
     alert(
-      `📧 Email gönderildi!\nAlıcı: ${emailData.recipient}\nKonu: ${emailData.subject}\nİçerik: ${emailContent}`
+      "📧 Email gönderildi!\nAlıcı: " + emailData.recipient + "\nKonu: " + emailData.subject + "\nİçerik: " + emailContent
     );
   };
 
@@ -364,22 +364,10 @@ const KPIDashboard = () => {
     const currentMetrics = calculateMetrics();
 
     // WhatsApp mesaj içeriği
-    const message = `📊 İstanbul Müşteriler KPI Dashboard - ${new Date().toLocaleDateString(
-      "tr-TR"
-    )}
-    
-📈 Günlük Ortalamalar:
-• Arama: ${currentMetrics.avgCalls}
-• Teklif: ${currentMetrics.avgProposals}  
-• Online Ziyaret: ${currentMetrics.avgOnline}
-• Fiziki Ziyaret: ${currentMetrics.avgPhysical}
-• Toplam Ziyaret: ${currentMetrics.avgTotal}
-• Aktif Çalışan: ${currentMetrics.activeCount}/${employees.length}
-
-Dashboard ekran görüntüsü için link: [Screenshot URL]`;
+    const message = "📊 İstanbul Müşteriler KPI Dashboard - " + new Date().toLocaleDateString("tr-TR") + "\n\n📈 Günlük Ortalamalar:\n• Arama: " + currentMetrics.avgCalls + "\n• Teklif: " + currentMetrics.avgProposals + "\n• Online Ziyaret: " + currentMetrics.avgOnline + "\n• Fiziki Ziyaret: " + currentMetrics.avgPhysical + "\n• Toplam Ziyaret: " + currentMetrics.avgTotal + "\n• Aktif Çalışan: " + currentMetrics.activeCount + "/" + employees.length + "\n\nDashboard ekran görüntüsü için link: [Screenshot URL]";
 
     // WhatsApp Web URL'i oluştur
-    const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = "https://wa.me/?text=" + encodeURIComponent(message);
 
     // Yeni sekmede WhatsApp Web'i aç
     window.open(whatsappUrl, "_blank");
@@ -1158,7 +1146,7 @@ Dashboard ekran görüntüsü için link: [Screenshot URL]`;
             ...(progressType === "excellent"
               ? styles.progressExcellent
               : styles.progressGood),
-            width: `${progress}%`,
+            width: progress + "%",
           }}
         />
       </div>
@@ -1475,11 +1463,9 @@ Dashboard ekran görüntüsü için link: [Screenshot URL]`;
           progressType="excellent"
         />
         <MetricCard
-          value={`${metrics.activeCount}/${employees.length}`}
+          value={metrics.activeCount + "/" + employees.length}
           label="👥 Bugün Aktif"
-          target={`Katılım: ${Math.round(
-            (metrics.activeCount / employees.length) * 100
-          )}%`}
+          target={"Katılım: " + Math.round((metrics.activeCount / employees.length) * 100) + "%"}
           progress={Math.round((metrics.activeCount / employees.length) * 100)}
           progressType="excellent"
         />
@@ -1534,13 +1520,11 @@ Dashboard ekran görüntüsü için link: [Screenshot URL]`;
                       key={emp.name}
                       style={{
                         ...styles.employeeItem,
-                        borderLeft: `4px solid ${
-                          isActive
+                        borderLeft: "4px solid " + (isActive
                             ? "#28a745"
                             : isOnLeave
                             ? "#ffc107"
-                            : "#dc3545"
-                        }`,
+                            : "#dc3545"),
                       }}
                     >
                       <div>
@@ -1555,11 +1539,11 @@ Dashboard ekran görüntüsü için link: [Screenshot URL]`;
                       </div>
                       <div style={{ fontSize: "0.9em" }}>
                         {isActive ? (
-                          <>
+                          <React.Fragment>
                             Arama {todayEntry.calls} | Teklif{" "}
                             {todayEntry.proposals} | Toplam Ziyaret{" "}
                             {todayEntry.total_visits}
-                          </>
+                          </React.Fragment>
                         ) : isOnLeave ? (
                           <span style={{ color: "#856404" }}>İzinli</span>
                         ) : (
@@ -1631,7 +1615,7 @@ Dashboard ekran görüntüsü için link: [Screenshot URL]`;
             </select>
           </div>
           {selectedEmployee && (
-            <>
+            <React.Fragment>
               <div style={styles.formGroup}>
                 <div style={styles.label}>🏢 Ekip</div>
                 <div style={styles.autoField}>{selectedEmployee.team}</div>
@@ -1640,7 +1624,7 @@ Dashboard ekran görüntüsü için link: [Screenshot URL]`;
                 <div style={styles.label}>📋 Segment</div>
                 <div style={styles.autoField}>{selectedEmployee.segment}</div>
               </div>
-            </>
+            </React.Fragment>
           )}
         </div>
         <div>
@@ -1652,7 +1636,7 @@ Dashboard ekran görüntüsü için link: [Screenshot URL]`;
               value={formData.calls}
               onChange={handleInputChange}
               style={styles.formControl}
-              placeholder={`Hedef: ${kpiTargets.calls || 45}`}
+              placeholder={"Hedef: " + (kpiTargets.calls || 45)}
               disabled={formData.onLeave || loading}
             />
           </div>
@@ -1664,7 +1648,7 @@ Dashboard ekran görüntüsü için link: [Screenshot URL]`;
               value={formData.proposals}
               onChange={handleInputChange}
               style={styles.formControl}
-              placeholder={`Hedef: ${kpiTargets.proposals || 5}`}
+              placeholder={"Hedef: " + (kpiTargets.proposals || 5)}
               disabled={formData.onLeave || loading}
             />
           </div>
@@ -2489,6 +2473,261 @@ Dashboard ekran görüntüsü için link: [Screenshot URL]`;
           <h3>🔐 Veri Silme Onayı</h3>
           <p>
             {deleteType === "employee" &&
-              `${deleteTarget} çalışanının tüm verilerini silmek için ekip şifresini girin:`}
+              deleteTarget + " çalışanının tüm verilerini silmek için ekip şifresini girin:"}
             {deleteType === "team" &&
-              `${deleteTarget} ekibinin tüm ver
+              deleteTarget + " ekibinin tüm verilerini silmek için ekip şifresini girin:"}
+            {deleteType === "all" &&
+              "TÜM VERİLERİ silmek için yönetici şifresini girin:"}
+          </p>
+          <input
+            type="password"
+            style={styles.formControl}
+            placeholder={
+              deleteType === "all" ? "Yönetici Şifresi" : "Ekip Şifresi"
+            }
+            value={passwordInput}
+            onChange={(e) => setPasswordInput(e.target.value)}
+          />
+          <div style={{ marginTop: "20px", display: "flex", gap: "10px" }}>
+            <button
+              style={{ ...styles.btn, ...styles.btnDanger }}
+              onClick={handleDelete}
+            >
+              🗑️ SİL
+            </button>
+            <button
+              style={styles.btn}
+              onClick={() => setShowDeleteModal(false)}
+            >
+              ❌ İptal
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Password Modal */}
+      <div
+        style={{
+          ...styles.modal,
+          ...(showPasswordModal ? styles.modalOpen : {}),
+        }}
+      >
+        <div style={styles.modalContent}>
+          <h3>🔑 Şifre Değiştir</h3>
+          <p>
+            {passwordAction === "admin"
+              ? "Yönetici şifresi değiştirmek için:"
+              : deleteTarget + " ekip şifresini değiştirmek için:"}
+          </p>
+          <div style={styles.formGroup}>
+            <div style={styles.label}>🔒 Mevcut Şifre</div>
+            <input
+              type="password"
+              style={styles.formControl}
+              placeholder="Mevcut şifrenizi girin"
+              value={oldPasswordInput}
+              onChange={(e) => setOldPasswordInput(e.target.value)}
+            />
+          </div>
+          <div style={styles.formGroup}>
+            <div style={styles.label}>🔑 Yeni Şifre</div>
+            <input
+              type="password"
+              style={styles.formControl}
+              placeholder="Yeni şifrenizi girin"
+              value={newPasswordInput}
+              onChange={(e) => setNewPasswordInput(e.target.value)}
+            />
+          </div>
+          <div style={{ marginTop: "20px", display: "flex", gap: "10px" }}>
+            <button
+              style={{ ...styles.btn, ...styles.btnSuccess }}
+              onClick={handlePasswordChange}
+            >
+              🔑 Şifreyi Değiştir
+            </button>
+            <button
+              style={styles.btn}
+              onClick={() => {
+                setShowPasswordModal(false);
+                setOldPasswordInput("");
+                setNewPasswordInput("");
+              }}
+            >
+              ❌ İptal
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Bulk Password Modal */}
+      <div
+        style={{
+          ...styles.modal,
+          ...(showBulkPasswordModal ? styles.modalOpen : {}),
+        }}
+      >
+        <div style={styles.modalContent}>
+          <h3>🔐 Toplu Veri Girişi - Şifre Kontrolü</h3>
+          <p>
+            <strong>{bulkFormData.team}</strong> ekibi için toplu veri girişi
+            yapacaksınız.
+          </p>
+          <p>Devam etmek için ekip şifresini girin:</p>
+          <input
+            type="password"
+            style={styles.formControl}
+            placeholder="Ekip Şifresi"
+            value={passwordInput}
+            onChange={(e) => setPasswordInput(e.target.value)}
+          />
+          <div style={{ marginTop: "20px", display: "flex", gap: "10px" }}>
+            <button
+              style={{ ...styles.btn, ...styles.btnSuccess }}
+              onClick={handleBulkPasswordSubmit}
+            >
+              ✅ Devam Et
+            </button>
+            <button
+              style={styles.btn}
+              onClick={() => setShowBulkPasswordModal(false)}
+            >
+              ❌ İptal
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Bulk Entry Modal */}
+      <div
+        style={{ ...styles.modal, ...(showBulkModal ? styles.modalOpen : {}) }}
+      >
+        <div
+          style={{ ...styles.modalContent, maxWidth: "90%", width: "1000px" }}
+        >
+          <h3>📊 {bulkFormData.team} - Toplu Veri Girişi</h3>
+          <p>Tarih: {bulkFormData.date}</p>
+
+          <div style={{ overflowX: "auto", marginTop: "20px" }}>
+            <div style={styles.bulkEmployeeRow}>
+              <div>
+                <strong>Çalışan</strong>
+              </div>
+              <div>
+                <strong>Arama</strong>
+              </div>
+              <div>
+                <strong>Teklif</strong>
+              </div>
+              <div>
+                <strong>Online Ziyaret</strong>
+              </div>
+              <div>
+                <strong>Fiziki Ziyaret</strong>
+              </div>
+              <div>
+                <strong>🏖️ İzinli</strong>
+              </div>
+            </div>
+
+            {bulkFormData.employees.map((emp, index) => (
+              <div key={emp.name} style={styles.bulkEmployeeRow}>
+                <div>
+                  <strong>{emp.name}</strong>
+                </div>
+                <div>
+                  <input
+                    type="number"
+                    style={{ ...styles.formControl, margin: 0, padding: "8px" }}
+                    value={emp.calls}
+                    onChange={(e) =>
+                      handleBulkEmployeeChange(index, "calls", e.target.value)
+                    }
+                    disabled={emp.onLeave}
+                    placeholder="45"
+                  />
+                </div>
+                <div>
+                  <input
+                    type="number"
+                    style={{ ...styles.formControl, margin: 0, padding: "8px" }}
+                    value={emp.proposals}
+                    onChange={(e) =>
+                      handleBulkEmployeeChange(
+                        index,
+                        "proposals",
+                        e.target.value
+                      )
+                    }
+                    disabled={emp.onLeave}
+                    placeholder="5"
+                  />
+                </div>
+                <div>
+                  <input
+                    type="number"
+                    style={{ ...styles.formControl, margin: 0, padding: "8px" }}
+                    value={emp.onlineVisits}
+                    onChange={(e) =>
+                      handleBulkEmployeeChange(
+                        index,
+                        "onlineVisits",
+                        e.target.value
+                      )
+                    }
+                    disabled={emp.onLeave}
+                    placeholder="2"
+                  />
+                </div>
+                <div>
+                  <input
+                    type="number"
+                    style={{ ...styles.formControl, margin: 0, padding: "8px" }}
+                    value={emp.physicalVisits}
+                    onChange={(e) =>
+                      handleBulkEmployeeChange(
+                        index,
+                        "physicalVisits",
+                        e.target.value
+                      )
+                    }
+                    disabled={emp.onLeave}
+                    placeholder="1"
+                  />
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    checked={emp.onLeave}
+                    onChange={(e) =>
+                      handleBulkEmployeeChange(
+                        index,
+                        "onLeave",
+                        e.target.checked
+                      )
+                    }
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div style={{ marginTop: "30px", display: "flex", gap: "10px" }}>
+            <button
+              style={{ ...styles.btn, ...styles.btnSuccess }}
+              onClick={handleBulkSubmit}
+              disabled={loading}
+            >
+              {loading ? "⏳ Kaydediyor..." : "💾 Toplu Kaydet"}
+            </button>
+            <button style={styles.btn} onClick={() => setShowBulkModal(false)}>
+              ❌ İptal
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default KPIDashboard;
