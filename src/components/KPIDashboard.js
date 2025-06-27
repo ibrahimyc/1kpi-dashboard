@@ -2,9 +2,9 @@ import React, { useState, useEffect, useRef } from "react";
 import { createClient } from "@supabase/supabase-js";
 
 // Environment variables'dan Supabase konfigürasyonu
-const supabaseUrl = process.env.REACT_APP_SUPABASE_URL || "https://wdmegcukhdmribetwxfg.supabase.co";
+const supabaseUrl = process.env.REACT_APP_SUPABASE_URL || "https://clqkrlricmbcmjhqlpjf.supabase.co";
 const supabaseKey = process.env.REACT_APP_SUPABASE_ANON_KEY || 
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndkbWVnY3VraGRtcmliZXR3eGZnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA4MzUzNTQsImV4cCI6MjA2NjQxMTM1NH0.OkMsqpwcSPYiPd8EZ4x2-hREhXGttR2h5Nvoon0d8so";
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNscWtybHJpY21iY21qaHFscGpmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA4Nzc2NjQsImV4cCI6MjA2NjQ1MzY2NH0.AjM30gVPmf7a3NalaBeIoPgoozsoePkzs-UeFA10QqI";
 
 const supabase = createClient(supabaseUrl, supabaseKey);
 
