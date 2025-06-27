@@ -2472,12 +2472,12 @@ const KPIDashboard = () => {
         <div style={styles.modalContent}>
           <h3>🔐 Veri Silme Onayı</h3>
           <p>
-            {deleteType === "employee" &&
-              deleteTarget + " çalışanının tüm verilerini silmek için ekip şifresini girin:"}
-            {deleteType === "team" &&
-              deleteTarget + " ekibinin tüm verilerini silmek için ekip şifresini girin:"}
-            {deleteType === "all" &&
-              "TÜM VERİLERİ silmek için yönetici şifresini girin:"}
+           {deleteType === "employee" &&
+  deleteTarget + " çalışanının tüm verilerini silmek için ekip şifresini girin:"}
+{deleteType === "team" &&
+  deleteTarget + " ekibinin tüm verilerini silmek için ekip şifresini girin:"}
+{deleteType === "all" &&
+  "TÜM VERİLERİ silmek için yönetici şifresini girin:"}
           </p>
           <input
             type="password"
