@@ -1,4 +1,4 @@
-# KPI Dashboard - İstanbul Müşteriler
+# 1KPI Dashboard - İstanbul Müşteriler
 
 📊 React tabanlı KPI (Key Performance Indicator) takip sistemi
 
@@ -17,9 +17,23 @@
 - **CSS-in-JS**: Stil yönetimi
 - **Modern JavaScript**: ES6+ özellikleri
 
+## 📱 Özellikler
+
+### Dashboard
+- Günlük ortalamalar
+- KPI kartları
+- Ekip performansları
+- Anlık metrikler
+
+### Veri Girişi
+- Tekli veri girişi formu
+- Çalışan seçimi
+- Otomatik hesaplamalar
+- İzin/hasta durumu takibi
+
 ## 🔧 Kurulum
 
 1. **Repository'yi klonlayın:**
 ```bash
-git clone https://github.com/kullanici-adi/kpi-dashboard.git
-cd kpi-dashboard
+git clone https://github.com/ibrahimyc/1kpi-dashboard.git
+cd 1kpi-dashboard
